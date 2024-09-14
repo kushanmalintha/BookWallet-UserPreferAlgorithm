@@ -1,6 +1,7 @@
 class Book:
-    def __init__(self, reading_time, book_length, author, genre, sensitivity, 
+    def __init__(self, name, reading_time, book_length, author, genre, sensitivity, 
                  book_prefer, reading_goal, groups, book_interaction, adaptation):
+        self.name = name
         self.reading_time = reading_time
         self.book_length = book_length
         self.author = author
@@ -11,6 +12,9 @@ class Book:
         self.groups = groups
         self.book_interaction = book_interaction
         self.adaptation = adaptation
+
+    def __repr__(self):
+        return self.name
 
     # Getters and Setters for reading_time
     def get_reading_time(self, key):
@@ -87,6 +91,7 @@ class Book:
 
 
 book1 = Book(
+    name="book1",
     reading_time={"morning": 3, "afternoon": 4, "evening": 6, "night": 7},
     book_length={"short_stories": False, "novellas": True, "full_length_novels": True},
     author="George Orwell",
@@ -104,6 +109,7 @@ book1 = Book(
 )
 
 book2 = Book(
+    name="book2",
     reading_time={"morning": 6, "afternoon": 5, "evening": 7, "night": 4},
     book_length={"short_stories": True, "novellas": False, "full_length_novels": True},
     author="J.K. Rowling",
@@ -121,6 +127,7 @@ book2 = Book(
 )
 
 book3 = Book(
+    name="book3",
     reading_time={"morning": 5, "afternoon": 3, "evening": 7, "night": 2},
     book_length={"short_stories": False, "novellas": False, "full_length_novels": True},
     author="Agatha Christie",
@@ -138,6 +145,7 @@ book3 = Book(
 )
 
 book4 = Book(
+    name="book4",
     reading_time={"morning": 2, "afternoon": 5, "evening": 8, "night": 4},
     book_length={"short_stories": True, "novellas": True, "full_length_novels": False},
     author="Isaac Asimov",
@@ -155,6 +163,7 @@ book4 = Book(
 )
 
 book5 = Book(
+    name="book5",
     reading_time={"morning": 4, "afternoon": 6, "evening": 7, "night": 3},
     book_length={"short_stories": False, "novellas": False, "full_length_novels": True},
     author="J.R.R. Tolkien",
@@ -172,6 +181,7 @@ book5 = Book(
 )
 
 book6 = Book(
+    name="book6",
     reading_time={"morning": 5, "afternoon": 4, "evening": 6, "night": 7},
     book_length={"short_stories": True, "novellas": False, "full_length_novels": True},
     author="Stephen King",
@@ -189,6 +199,7 @@ book6 = Book(
 )
 
 book7 = Book(
+    name="book7",
     reading_time={"morning": 2, "afternoon": 5, "evening": 6, "night": 5},
     book_length={"short_stories": True, "novellas": True, "full_length_novels": False},
     author="Jane Austen",
@@ -206,6 +217,7 @@ book7 = Book(
 )
 
 book8 = Book(
+    name="book8",
     reading_time={"morning": 3, "afternoon": 7, "evening": 4, "night": 6},
     book_length={"short_stories": False, "novellas": True, "full_length_novels": True},
     author="Margaret Atwood",
@@ -223,6 +235,7 @@ book8 = Book(
 )
 
 book9 = Book(
+    name="book9",
     reading_time={"morning": 1, "afternoon": 3, "evening": 5, "night": 7},
     book_length={"short_stories": False, "novellas": True, "full_length_novels": True},
     author="Neil Gaiman",
@@ -240,6 +253,7 @@ book9 = Book(
 )
 
 book10 = Book(
+    name="book10",
     reading_time={"morning": 2, "afternoon": 6, "evening": 5, "night": 4},
     book_length={"short_stories": True, "novellas": True, "full_length_novels": False},
     author="F. Scott Fitzgerald",
@@ -257,6 +271,7 @@ book10 = Book(
 )
 
 book11 = Book(
+    name="book11",
     reading_time={"morning": 4, "afternoon": 5, "evening": 6, "night": 3},
     book_length={"short_stories": False, "novellas": False, "full_length_novels": True},
     author="Dan Brown",
@@ -274,6 +289,7 @@ book11 = Book(
 )
 
 book12 = Book(
+    name="book12",
     reading_time={"morning": 3, "afternoon": 4, "evening": 7, "night": 5},
     book_length={"short_stories": True, "novellas": False, "full_length_novels": True},
     author="John Green",
@@ -291,6 +307,7 @@ book12 = Book(
 )
 
 book13 = Book(
+    name="book13",
     reading_time={"morning": 6, "afternoon": 4, "evening": 3, "night": 7},
     book_length={"short_stories": False, "novellas": True, "full_length_novels": True},
     author="George R.R. Martin",
@@ -308,6 +325,7 @@ book13 = Book(
 )
 
 book14 = Book(
+    name="book14",
     reading_time={"morning": 3, "afternoon": 5, "evening": 4, "night": 8},
     book_length={"short_stories": False, "novellas": False, "full_length_novels": True},
     author="J.K. Rowling",
@@ -325,6 +343,7 @@ book14 = Book(
 )
 
 book15 = Book(
+    name="book15",
     reading_time={"morning": 2, "afternoon": 6, "evening": 5, "night": 7},
     book_length={"short_stories": True, "novellas": True, "full_length_novels": False},
     author="Harper Lee",
@@ -342,6 +361,7 @@ book15 = Book(
 )
 
 book16 = Book(
+    name="book16",
     reading_time={"morning": 4, "afternoon": 7, "evening": 3, "night": 6},
     book_length={"short_stories": False, "novellas": False, "full_length_novels": True},
     author="Isaac Asimov",
@@ -359,6 +379,7 @@ book16 = Book(
 )
 
 book17 = Book(
+    name="book17",
     reading_time={"morning": 5, "afternoon": 3, "evening": 6, "night": 4},
     book_length={"short_stories": True, "novellas": False, "full_length_novels": False},
     author="Margaret Atwood",
@@ -376,6 +397,7 @@ book17 = Book(
 )
 
 book18 = Book(
+    name="book18",
     reading_time={"morning": 1, "afternoon": 2, "evening": 5, "night": 9},
     book_length={"short_stories": False, "novellas": True, "full_length_novels": True},
     author="Agatha Christie",
@@ -393,6 +415,7 @@ book18 = Book(
 )
 
 book19 = Book(
+    name="book19",
     reading_time={"morning": 7, "afternoon": 4, "evening": 2, "night": 5},
     book_length={"short_stories": False, "novellas": True, "full_length_novels": True},
     author="J.R.R. Tolkien",
@@ -410,6 +433,7 @@ book19 = Book(
 )
 
 book20 = Book(
+    name="book20",
     reading_time={"morning": 2, "afternoon": 3, "evening": 6, "night": 8},
     book_length={"short_stories": True, "novellas": True, "full_length_novels": False},
     author="Orson Scott Card",
@@ -427,6 +451,7 @@ book20 = Book(
 )
 
 book21 = Book(
+    name="book21",
     reading_time={"morning": 6, "afternoon": 5, "evening": 4, "night": 7},
     book_length={"short_stories": False, "novellas": True, "full_length_novels": True},
     author="Stephen King",
@@ -444,6 +469,7 @@ book21 = Book(
 )
 
 book22 = Book(
+    name="book22",
     reading_time={"morning": 4, "afternoon": 6, "evening": 3, "night": 7},
     book_length={"short_stories": True, "novellas": False, "full_length_novels": True},
     author="Dan Brown",
@@ -461,6 +487,7 @@ book22 = Book(
 )
 
 book23 = Book(
+    name="book23",
     reading_time={"morning": 3, "afternoon": 5, "evening": 6, "night": 4},
     book_length={"short_stories": False, "novellas": True, "full_length_novels": True},
     author="Malcolm Gladwell",
@@ -478,6 +505,7 @@ book23 = Book(
 )
 
 book24 = Book(
+    name="book24",
     reading_time={"morning": 2, "afternoon": 4, "evening": 7, "night": 6},
     book_length={"short_stories": True, "novellas": True, "full_length_novels": False},
     author="Neil Gaiman",
@@ -495,6 +523,7 @@ book24 = Book(
 )
 
 book25 = Book(
+    name="book25",
     reading_time={"morning": 5, "afternoon": 4, "evening": 2, "night": 7},
     book_length={"short_stories": True, "novellas": False, "full_length_novels": True},
     author="J.K. Rowling",
@@ -512,6 +541,7 @@ book25 = Book(
 )
 
 book26 = Book(
+    name="book26",
     reading_time={"morning": 4, "afternoon": 7, "evening": 3, "night": 6},
     book_length={"short_stories": False, "novellas": True, "full_length_novels": True},
     author="Tolkien",
@@ -529,6 +559,7 @@ book26 = Book(
 )
 
 book27 = Book(
+    name="book27",
     reading_time={"morning": 2, "afternoon": 6, "evening": 7, "night": 5},
     book_length={"short_stories": True, "novellas": True, "full_length_novels": False},
     author="Isaac Asimov",
@@ -546,6 +577,7 @@ book27 = Book(
 )
 
 book28 = Book(
+    name="book28",
     reading_time={"morning": 3, "afternoon": 6, "evening": 5, "night": 4},
     book_length={"short_stories": False, "novellas": True, "full_length_novels": True},
     author="Ray Bradbury",
@@ -563,6 +595,7 @@ book28 = Book(
 )
 
 book29 = Book(
+    name="book29",
     reading_time={"morning": 3, "afternoon": 5, "evening": 6, "night": 4},
     book_length={"short_stories": False, "novellas": False, "full_length_novels": True},
     author="J.R.R. Tolkien",
@@ -580,6 +613,7 @@ book29 = Book(
 )
 
 book30 = Book(
+    name="book30",
     reading_time={"morning": 2, "afternoon": 4, "evening": 7, "night": 6},
     book_length={"short_stories": True, "novellas": True, "full_length_novels": False},
     author="George R.R. Martin",
@@ -597,6 +631,7 @@ book30 = Book(
 )
 
 book31 = Book(
+    name="book31",
     reading_time={"morning": 5, "afternoon": 3, "evening": 6, "night": 4},
     book_length={"short_stories": False, "novellas": True, "full_length_novels": True},
     author="Margaret Atwood",
@@ -614,6 +649,7 @@ book31 = Book(
 )
 
 book32 = Book(
+    name="book32",
     reading_time={"morning": 4, "afternoon": 6, "evening": 5, "night": 3},
     book_length={"short_stories": True, "novellas": False, "full_length_novels": True},
     author="J.D. Salinger",
@@ -631,6 +667,7 @@ book32 = Book(
 )
 
 book33 = Book(
+    name="book33",
     reading_time={"morning": 3, "afternoon": 7, "evening": 5, "night": 2},
     book_length={"short_stories": False, "novellas": False, "full_length_novels": True},
     author="Neil Gaiman",
@@ -648,6 +685,7 @@ book33 = Book(
 )
 
 book34 = Book(
+    name="book34",
     reading_time={"morning": 6, "afternoon": 5, "evening": 3, "night": 4},
     book_length={"short_stories": True, "novellas": True, "full_length_novels": False},
     author="Stephen King",
@@ -665,6 +703,7 @@ book34 = Book(
 )
 
 book35 = Book(
+    name="book35",
     reading_time={"morning": 4, "afternoon": 6, "evening": 3, "night": 7},
     book_length={"short_stories": False, "novellas": True, "full_length_novels": True},
     author="Jane Austen",
@@ -682,6 +721,7 @@ book35 = Book(
 )
 
 book36 = Book(
+    name="book36",
     reading_time={"morning": 2, "afternoon": 4, "evening": 6, "night": 5},
     book_length={"short_stories": True, "novellas": True, "full_length_novels": True},
     author="Agatha Christie",
@@ -699,6 +739,7 @@ book36 = Book(
 )
 
 book37 = Book(
+    name="book37",
     reading_time={"morning": 5, "afternoon": 6, "evening": 4, "night": 2},
     book_length={"short_stories": False, "novellas": True, "full_length_novels": True},
     author="Dan Brown",
@@ -716,6 +757,7 @@ book37 = Book(
 )
 
 book38 = Book(
+    name="book38",
     reading_time={"morning": 3, "afternoon": 5, "evening": 6, "night": 4},
     book_length={"short_stories": True, "novellas": False, "full_length_novels": True},
     author="J.K. Rowling",
@@ -733,6 +775,7 @@ book38 = Book(
 )
 
 book39 = Book(
+    name="book39",
     reading_time={"morning": 4, "afternoon": 6, "evening": 5, "night": 5},
     book_length={"short_stories": True, "novellas": False, "full_length_novels": True},
     author="Isaac Asimov",
@@ -750,6 +793,7 @@ book39 = Book(
 )
 
 book40 = Book(
+    name="book40",
     reading_time={"morning": 3, "afternoon": 4, "evening": 7, "night": 6},
     book_length={"short_stories": False, "novellas": True, "full_length_novels": True},
     author="Margaret Atwood",
@@ -767,6 +811,7 @@ book40 = Book(
 )
 
 book41 = Book(
+    name="book41",
     reading_time={"morning": 5, "afternoon": 5, "evening": 5, "night": 5},
     book_length={"short_stories": False, "novellas": True, "full_length_novels": True},
     author="J.R.R. Tolkien",
@@ -784,6 +829,7 @@ book41 = Book(
 )
 
 book42 = Book(
+    name="book42",
     reading_time={"morning": 6, "afternoon": 6, "evening": 4, "night": 4},
     book_length={"short_stories": True, "novellas": True, "full_length_novels": True},
     author="Haruki Murakami",
@@ -801,6 +847,7 @@ book42 = Book(
 )
 
 book43 = Book(
+    name="book43",
     reading_time={"morning": 4, "afternoon": 4, "evening": 6, "night": 6},
     book_length={"short_stories": False, "novellas": True, "full_length_novels": True},
     author="C.S. Lewis",
@@ -818,6 +865,7 @@ book43 = Book(
 )
 
 book44 = Book(
+    name="book44",
     reading_time={"morning": 6, "afternoon": 4, "evening": 5, "night": 5},
     book_length={"short_stories": True, "novellas": True, "full_length_novels": True},
     author="Alice Munro",
@@ -835,6 +883,7 @@ book44 = Book(
 )
 
 book45 = Book(
+    name="book45",
     reading_time={"morning": 3, "afternoon": 5, "evening": 6, "night": 5},
     book_length={"short_stories": True, "novellas": False, "full_length_novels": True},
     author="Ruth Ware",
@@ -852,6 +901,7 @@ book45 = Book(
 )
 
 book46 = Book(
+    name="book46",
     reading_time={"morning": 4, "afternoon": 6, "evening": 4, "night": 5},
     book_length={"short_stories": True, "novellas": False, "full_length_novels": True},
     author="John Green",
@@ -869,6 +919,7 @@ book46 = Book(
 )
 
 book47 = Book(
+    name="book47",
     reading_time={"morning": 5, "afternoon": 4, "evening": 5, "night": 6},
     book_length={"short_stories": False, "novellas": True, "full_length_novels": True},
     author="Chimamanda Ngozi Adichie",
@@ -886,6 +937,7 @@ book47 = Book(
 )
 
 book48 = Book(
+    name="book48",
     reading_time={"morning": 6, "afternoon": 6, "evening": 5, "night": 3},
     book_length={"short_stories": False, "novellas": True, "full_length_novels": True},
     author="Tom Robbins",
@@ -903,6 +955,7 @@ book48 = Book(
 )
 
 book49 = Book(
+    name="book49",
     reading_time={"morning": 5, "afternoon": 5, "evening": 5, "night": 5},
     book_length={"short_stories": False, "novellas": True, "full_length_novels": True},
     author="N.K. Jemisin",
@@ -920,6 +973,7 @@ book49 = Book(
 )
 
 book50 = Book(
+    name="book50",
     reading_time={"morning": 4, "afternoon": 6, "evening": 4, "night": 6},
     book_length={"short_stories": False, "novellas": True, "full_length_novels": True},
     author="Toni Morrison",

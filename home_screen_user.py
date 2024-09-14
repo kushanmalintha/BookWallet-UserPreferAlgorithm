@@ -1,7 +1,8 @@
 class User:
-    def __init__(self, reading_time, book_length, authors, genre, sensitivity, 
+    def __init__(self, name, reading_time, book_length, authors, genre, sensitivity, 
                  book_prefer, reading_goal, groups, book_interaction, 
                  adaptation, reading_habit):
+        self.name = name
         self.reading_time = reading_time
         self.book_length = book_length
         self.authors = authors
@@ -13,6 +14,9 @@ class User:
         self.book_interaction = book_interaction
         self.adaptation = adaptation
         self.reading_habit = reading_habit
+
+    def __repr__(self):
+        return self.name
 
     # Getter and Setter for Reading Time
     def set_reading_time(self, key, value):
@@ -93,6 +97,7 @@ class User:
 
 
 user1 = User(
+    name = "user1",
     reading_time={"morning": 5, "afternoon": 3, "evening": 2, "night": 6},
     book_length={"short_stories": 4, "novellas": 2, "full_length_novels": 4},
     authors=["J.K. Rowling", "George R.R. Martin", "Stephen King", "Agatha Christie", "J.R.R. Tolkien"],
@@ -109,6 +114,7 @@ user1 = User(
 )
 
 user2 = User(
+    name = "user2",
     reading_time={"morning": 2, "afternoon": 4, "evening": 6, "night": 3},
     book_length={"short_stories": 3, "novellas": 4, "full_length_novels": 3},
     authors=["Stephen King"],
@@ -125,6 +131,7 @@ user2 = User(
 )
 
 user3 = User(
+    name = "user3",
     reading_time={"morning": 4, "afternoon": 5, "evening": 3, "night": 4},
     book_length={"short_stories": 5, "novellas": 3, "full_length_novels": 2},
     authors=["George R.R. Martin"],
@@ -141,6 +148,7 @@ user3 = User(
 )
 
 user4 = User(
+    name = "user4",
     reading_time={"morning": 3, "afternoon": 5, "evening": 4, "night": 6},
     book_length={"short_stories": 2, "novellas": 4, "full_length_novels": 4},
     authors=["Agatha Christie", "Arthur Conan Doyle", "Edgar Allan Poe", "J.D. Salinger", "Ray Bradbury"],
@@ -157,6 +165,7 @@ user4 = User(
 )
 
 user5 = User(
+    name = "user5",
     reading_time={"morning": 2, "afternoon": 3, "evening": 7, "night": 5},
     book_length={"short_stories": 3, "novellas": 3, "full_length_novels": 6},
     authors=["John Grisham", "Dan Brown", "Michael Connelly", "James Patterson", "Lee Child"],
@@ -173,6 +182,7 @@ user5 = User(
 )
 
 user6 = User(
+    name = "user6",
     reading_time={"morning": 4, "afternoon": 6, "evening": 5, "night": 3},
     book_length={"short_stories": 2, "novellas": 5, "full_length_novels": 3},
     authors=["Margaret Atwood", "Neil Gaiman", "Isabel Allende", "Chimamanda Ngozi Adichie", "Salman Rushdie"],
@@ -189,70 +199,7 @@ user6 = User(
 )
 
 user7 = User(
-    reading_time={"morning": 6, "afternoon": 4, "evening": 3, "night": 2},
-    book_length={"short_stories": 4, "novellas": 3, "full_length_novels": 3},
-    authors=["J.R.R. Tolkien", "C.S. Lewis", "L.E. Modesitt Jr.", "Brandon Sanderson", "Patrick Rothfuss"],
-    genre={"romance": 5, "adventure": 8, "mystery": 3, "fantasy": 9, "historical": 2, "sci-fic": 6,
-           "biography": 2, "horror": 1, "comic": 1, "self-help": 2, "religion": 1},
-    sensitivity={"violence": 4, "profanity": 3, "sexual": 2, "none": 7},
-    book_prefer={"recommendation": 7, "top-rated": 8, "new-release": 5, "best-seller": 6, "award-winnig": 5},
-    reading_goal={"entertainment": 9, "personal-growth": 3, "cultural-understanding": 2, "research": 1,
-                  "philosophy": 1, "educational": 2, "relaxation": 7, "professional-development": 2},
-    groups=["Fantasy", "Epic Fantasy"],
-    book_interaction={"reviewing-behaviour": 4, "book-discussions": 3, "social-sharing": 2},
-    adaptation={"based-movies": 9, "no-based-movies": 1},
-    reading_habit={"daily": 5, "weekly": 3, "monthly": 2}
-)
-
-user4 = User(
-    reading_time={"morning": 3, "afternoon": 5, "evening": 4, "night": 6},
-    book_length={"short_stories": 2, "novellas": 4, "full_length_novels": 4},
-    authors=["Agatha Christie", "Arthur Conan Doyle", "Edgar Allan Poe", "J.D. Salinger", "Ray Bradbury"],
-    genre={"romance": 7, "adventure": 4, "mystery": 9, "fantasy": 2, "historical": 3, "sci-fic": 1,
-           "biography": 2, "horror": 2, "comic": 1, "self-help": 2, "religion": 1},
-    sensitivity={"violence": 4, "profanity": 3, "sexual": 2, "none": 1},
-    book_prefer={"recommendation": 7, "top-rated": 6, "new-release": 5, "best-seller": 8, "award-winnig": 4},
-    reading_goal={"entertainment": 7, "personal-growth": 4, "cultural-understanding": 3, "research": 2,
-                  "philosophy": 2, "educational": 3, "relaxation": 6, "professional-development": 2},
-    groups=["Mystery", "Classic"],
-    book_interaction={"reviewing-behaviour": 6, "book-discussions": 5, "social-sharing": 4},
-    adaptation={"based-movies": 6, "no-based-movies": 4},
-    reading_habit={"daily": 4, "weekly": 5, "monthly": 3}
-)
-
-user5 = User(
-    reading_time={"morning": 2, "afternoon": 3, "evening": 7, "night": 5},
-    book_length={"short_stories": 3, "novellas": 3, "full_length_novels": 6},
-    authors=["John Grisham", "Dan Brown", "Michael Connelly", "James Patterson", "Lee Child"],
-    genre={"romance": 6, "adventure": 5, "mystery": 7, "fantasy": 4, "historical": 3, "sci-fic": 6,
-           "biography": 3, "horror": 3, "comic": 2, "self-help": 4, "religion": 2},
-    sensitivity={"violence": 5, "profanity": 4, "sexual": 5, "none": 3},
-    book_prefer={"recommendation": 6, "top-rated": 8, "new-release": 7, "best-seller": 9, "award-winnig": 6},
-    reading_goal={"entertainment": 8, "personal-growth": 5, "cultural-understanding": 4, "research": 3,
-                  "philosophy": 2, "educational": 2, "relaxation": 7, "professional-development": 3},
-    groups=["Thriller", "Legal Drama"],
-    book_interaction={"reviewing-behaviour": 7, "book-discussions": 6, "social-sharing": 5},
-    adaptation={"based-movies": 7, "no-based-movies": 3},
-    reading_habit={"daily": 5, "weekly": 3, "monthly": 2}
-)
-
-user6 = User(
-    reading_time={"morning": 4, "afternoon": 6, "evening": 5, "night": 3},
-    book_length={"short_stories": 2, "novellas": 5, "full_length_novels": 3},
-    authors=["Margaret Atwood", "Neil Gaiman", "Isabel Allende", "Chimamanda Ngozi Adichie", "Salman Rushdie"],
-    genre={"romance": 4, "adventure": 5, "mystery": 6, "fantasy": 7, "historical": 4, "sci-fic": 5,
-           "biography": 4, "horror": 1, "comic": 1, "self-help": 3, "religion": 2},
-    sensitivity={"violence": 3, "profanity": 2, "sexual": 3, "none": 5},
-    book_prefer={"recommendation": 8, "top-rated": 6, "new-release": 7, "best-seller": 5, "award-winnig": 8},
-    reading_goal={"entertainment": 6, "personal-growth": 7, "cultural-understanding": 8, "research": 5,
-                  "philosophy": 3, "educational": 4, "relaxation": 5, "professional-development": 3},
-    groups=["Contemporary", "Historical Fiction"],
-    book_interaction={"reviewing-behaviour": 5, "book-discussions": 7, "social-sharing": 6},
-    adaptation={"based-movies": 5, "no-based-movies": 5},
-    reading_habit={"daily": 6, "weekly": 2, "monthly": 2}
-)
-
-user7 = User(
+    name = "user7",
     reading_time={"morning": 6, "afternoon": 4, "evening": 3, "night": 2},
     book_length={"short_stories": 4, "novellas": 3, "full_length_novels": 3},
     authors=["J.R.R. Tolkien", "C.S. Lewis", "L.E. Modesitt Jr.", "Brandon Sanderson", "Patrick Rothfuss"],
@@ -269,6 +216,7 @@ user7 = User(
 )
 
 user8 = User(
+    name = "user8",
     reading_time={"morning": 5, "afternoon": 4, "evening": 3, "night": 6},
     book_length={"short_stories": 6, "novellas": 2, "full_length_novels": 2},
     authors=["Stephen King", "Clive Barker", "Anne Rice", "H.P. Lovecraft", "Paul Tremblay"],
@@ -285,6 +233,7 @@ user8 = User(
 )
 
 user9 = User(
+    name = "user9",
     reading_time={"morning": 2, "afternoon": 3, "evening": 7, "night": 5},
     book_length={"short_stories": 3, "novellas": 3, "full_length_novels": 6},
     authors=["George R.R. Martin", "J.K. Rowling", "Patrick Rothfuss", "J.R.R. Tolkien", "Terry Pratchett"],
@@ -301,6 +250,7 @@ user9 = User(
 )
 
 user10 = User(
+    name = "user10",
     reading_time={"morning": 3, "afternoon": 6, "evening": 5, "night": 4},
     book_length={"short_stories": 4, "novellas": 2, "full_length_novels": 4},
     authors=["Suzanne Collins", "Veronica Roth", "Dystopian Fiction Author", "Margaret Atwood", "Ally Condie"],
@@ -317,6 +267,7 @@ user10 = User(
 )
 
 user11 = User(
+    name = "user11",
     reading_time={"morning": 4, "afternoon": 4, "evening": 6, "night": 4},
     book_length={"short_stories": 2, "novellas": 3, "full_length_novels": 5},
     authors=["Jane Austen", "Charles Dickens", "Leo Tolstoy", "Emily Brontë", "F. Scott Fitzgerald"],
@@ -333,6 +284,7 @@ user11 = User(
 )
 
 user12 = User(
+    name = "user12",
     reading_time={"morning": 6, "afternoon": 5, "evening": 4, "night": 3},
     book_length={"short_stories": 7, "novellas": 1, "full_length_novels": 2},
     authors=["Isaac Asimov", "Arthur C. Clarke", "Philip K. Dick", "Ursula K. Le Guin", "William Gibson"],
@@ -349,6 +301,7 @@ user12 = User(
 )
 
 user13 = User(
+    name = "user13",
     reading_time={"morning": 2, "afternoon": 6, "evening": 7, "night": 5},
     book_length={"short_stories": 4, "novellas": 4, "full_length_novels": 2},
     authors=["Margaret Atwood", "Kurt Vonnegut", "Chuck Palahniuk", "Jeff VanderMeer", "Neil Gaiman"],
@@ -365,6 +318,7 @@ user13 = User(
 )
 
 user14 = User(
+    name = "user14",
     reading_time={"morning": 7, "afternoon": 4, "evening": 5, "night": 2},
     book_length={"short_stories": 3, "novellas": 2, "full_length_novels": 5},
     authors=["John Green", "Rainbow Rowell", "David Levithan", "Jennifer Niven", "E. Lockhart"],
@@ -381,6 +335,7 @@ user14 = User(
 )
 
 user15 = User(
+    name = "user15",
     reading_time={"morning": 4, "afternoon": 6, "evening": 5, "night": 5},
     book_length={"short_stories": 5, "novellas": 2, "full_length_novels": 3},
     authors=["Liane Moriarty", "Gillian Flynn", "Paula Hawkins", "Tana French", "Shari Lapena"],
@@ -397,6 +352,7 @@ user15 = User(
 )
 
 user16 = User(
+    name = "user16",
     reading_time={"morning": 5, "afternoon": 3, "evening": 6, "night": 4},
     book_length={"short_stories": 6, "novellas": 1, "full_length_novels": 3},
     authors=["Stephen King", "James Patterson", "Dean Koontz", "Michael Connelly", "Harlan Coben"],
@@ -413,6 +369,7 @@ user16 = User(
 )
 
 user17 = User(
+    name = "user17",
     reading_time={"morning": 3, "afternoon": 5, "evening": 7, "night": 3},
     book_length={"short_stories": 3, "novellas": 4, "full_length_novels": 3},
     authors=["J.K. Rowling", "J.R.R. Tolkien", "George R.R. Martin", "Brandon Sanderson", "Patrick Rothfuss"],
@@ -429,6 +386,7 @@ user17 = User(
 )
 
 user18 = User(
+    name = "user18",
     reading_time={"morning": 7, "afternoon": 4, "evening": 5, "night": 3},
     book_length={"short_stories": 5, "novellas": 2, "full_length_novels": 3},
     authors=["Gillian Flynn", "Paula Hawkins", "Tana French", "Lisa Jewell", "Shari Lapena"],
@@ -445,6 +403,7 @@ user18 = User(
 )
 
 user19 = User(
+    name = "user19",
     reading_time={"morning": 4, "afternoon": 6, "evening": 4, "night": 6},
     book_length={"short_stories": 6, "novellas": 3, "full_length_novels": 1},
     authors=["Stephen King", "Harlan Coben", "James Patterson", "Michael Connelly", "Lee Child"],
@@ -461,6 +420,7 @@ user19 = User(
 )
 
 user20 = User(
+    name = "user20",
     reading_time={"morning": 6, "afternoon": 3, "evening": 5, "night": 6},
     book_length={"short_stories": 2, "novellas": 4, "full_length_novels": 4},
     authors=["Margaret Atwood", "Chimamanda Ngozi Adichie", "Arundhati Roy", "Zadie Smith", "Toni Morrison"],

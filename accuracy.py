@@ -1,3 +1,6 @@
+from home_screen_user import user1, user2
+from home_screen_book import book1, book2
+
 # bar method
 
 # reading time
@@ -67,7 +70,7 @@ def genre(romance_user, adventure_user, mystery_user, fantasy_user, historical_u
     sum_max_values = sum(max(book, user) for book, user in zip(book_genres, user_preferences))
     
     # Return the ratio of the sum of absolute differences to the sum of max values
-    return (sum_abs_diff / sum_max_values)*100
+    return 100 - (sum_abs_diff / sum_max_values)*100
 
 # book sensitivity
 
@@ -84,7 +87,7 @@ def sensitivity(violence_user, profanity_user, sexual_user, none_user,
     sum_max_values = sum(max(book, user) for book, user in zip(book_genres, user_preferences))
     
     # Return the ratio of the sum of absolute differences to the sum of max values
-    return (sum_abs_diff / sum_max_values)*100
+    return 100 - (sum_abs_diff / sum_max_values)*100
 
 # reading goal
 
@@ -102,7 +105,7 @@ def reading_goal(entertainment_user, personal_growth_user, cultural_understandin
     sum_abs_diff = sum(abs(book - user) for book, user in zip(book_attributes, user_goals))
     sum_max_values = sum(max(book, user) for book, user in zip(book_attributes, user_goals))
     
-    return (sum_abs_diff / sum_max_values)*100
+    return 100 - (sum_abs_diff / sum_max_values)*100
 
 # bool
 
@@ -121,34 +124,89 @@ def group(group_user, group_book):
         return 100
     else:
         return 0
+
+# accuracy
+
+def accuracy(user, book):
+    # Reading Time
+    reading_time_result = reading_time(
+        user.reading_time["morning"], user.reading_time["afternoon"],
+        user.reading_time["evening"], user.reading_time["night"],
+        book.reading_time["morning"], book.reading_time["afternoon"],
+        book.reading_time["evening"], book.reading_time["night"]
+    )
+    print("Reading Time Similarity Score:", reading_time_result)
     
-# example1
+    # Book Length
+    book_length_result = book_length(
+        user.book_length["short_stories"], user.book_length["novellas"], user.book_length["full_length_novels"],
+        book.book_length["short_stories"], book.book_length["novellas"], book.book_length["full_length_novels"]
+    )
+    print("Book Length Similarity Score:", book_length_result)
+    
+    # Book Preferences
+    book_prefer_result = book_prefer(
+        user.book_prefer["recommendation"], user.book_prefer["top-rated"], user.book_prefer["new-release"],
+        user.book_prefer["best-seller"], user.book_prefer["award-winnig"],
+        book.book_prefer["recommendation"], book.book_prefer["top-rated"], book.book_prefer["new-release"],
+        book.book_prefer["best-seller"], book.book_prefer["award-winnig"]
+    )
+    print("Book Preference Similarity Score:", book_prefer_result)
+    
+    # Adaptation
+    adaptation_result = adaptation(
+        user.adaptation["based-movies"], user.adaptation["no-based-movies"],
+        book.adaptation["based-movies"], book.adaptation["no-based-movies"]
+    )
+    print("Adaptation Similarity Score:", adaptation_result)
+    
+    # Genre Preferences
+    genre_result = genre(
+        user.genre["romance"], user.genre["adventure"], user.genre["mystery"], user.genre["fantasy"],
+        user.genre["historical"], user.genre["sci-fic"], user.genre["biography"], user.genre["horror"],
+        user.genre["comic"], user.genre["self-help"], user.genre["religion"],
+        book.genre["romance"], book.genre["adventure"], book.genre["mystery"], book.genre["fantasy"],
+        book.genre["historical"], book.genre["sci-fic"], book.genre["biography"], book.genre["horror"],
+        book.genre["comic"], book.genre["self-help"], book.genre["religion"]
+    )
+    print("Genre Similarity Score:", genre_result)
+    
+    # Sensitivity
+    sensitivity_result = sensitivity(
+        user.sensitivity["violence"], user.sensitivity["profanity"], user.sensitivity["sexual"], user.sensitivity["none"],
+        book.sensitivity["violence"], book.sensitivity["profanity"], book.sensitivity["sexual"], book.sensitivity["none"]
+    )
+    print("Sensitivity Similarity Score:", sensitivity_result)
+    
+    # Reading Goals
+    reading_goal_result = reading_goal(
+        user.reading_goal["entertainment"], user.reading_goal["personal-growth"], user.reading_goal["cultural-understanding"],
+        user.reading_goal["research"], user.reading_goal["philosophy"], user.reading_goal["educational"],
+        user.reading_goal["relaxation"], user.reading_goal["professional-development"],
+        book.reading_goal["entertainment"], book.reading_goal["personal-growth"], book.reading_goal["cultural-understanding"],
+        book.reading_goal["research"], book.reading_goal["philosophy"], book.reading_goal["educational"],
+        book.reading_goal["relaxation"], book.reading_goal["professional-development"]
+    )
+    print("Reading Goal Similarity Score:", reading_goal_result)
+    
+    # Author Match
+    author_result = author(user.authors, book.author)
+    print("Author Similarity Score:", author_result)
+    
+    # Group Match
+    group_result = group(user.groups, book.groups)
+    print("Group Similarity Score:", group_result)
 
-reading_time_result = reading_time(5, 3, 2, 6, 3, 4, 6, 7)
-print("Reading Time Similarity Score:", reading_time_result)
-book_length_result = book_length(4, 2, 4, False, True, True)
-print("Book Length Similarity Score:", book_length_result)
-book_prefer_result = book_prefer(8, 7, 6, 7, 5, True, True, False, True, True)
-print("Book Preference Similarity Score:", book_prefer_result)
-adaptation_result = adaptation(7, 3, True, False)
-print("Adaptation Similarity Score:", adaptation_result)
-genre_result = genre(3, 8, 5, 9, 2, 7, 2, 1, 1, 3, 2, 2, 1, 3, 0, 5, 9, 0, 1, 0, 0, 0)
-print("Genre Similarity Score:", genre_result)
-sensitivity_result = sensitivity(5, 4, 3, 2, 5, 2, 1, 3)
-print("Sensitivity Similarity Score:", sensitivity_result)
-reading_goal_result = reading_goal(9, 6, 4, 3, 2, 3, 8, 2, 8, 3, 5, 6, 2, 7, 6, 4)
-print("Reading Goal Similarity Score:", reading_goal_result)
-author_result = author(["J.K. Rowling", "George R.R. Martin", "Stephen King", "Agatha Christie", "J.R.R. Tolkien"], "George Orwell")
-print("Author Similarity Score:", author_result)
-group_result = group(["Fantasy", "Adventure"], ["Dystopian Readers", "Classic Literature"])
-print("Group Similarity Score:", group_result)
+    # Calculate final accuracy
+    up = (15*reading_time_result)+(60*book_length_result)+(55*author_result)+(60*genre_result)+(50*sensitivity_result)+(20*book_prefer_result)+(55*reading_goal_result)+(35*group_result)+(45*adaptation_result)
+    down = 15+60+55+60+50+20+55+35+45
+    accuracy_result = up / down
+    print("Final Accuracy Score:", accuracy_result)
 
+    return accuracy_result
 
-def accuracy(reading_time_result, book_length_result, book_prefer_result,adaptation_result,
-             genre_result, sensitivity_result, reading_goal_result, author_result, group_result):
-    up = (15*reading_time_result)+(60*book_length_result)+(60*author_result)+(60*genre_result)+(50*sensitivity_result)+(20*book_prefer_result)+(55*reading_goal_result)+(40*group_result)+(45*adaptation_result)
-    down = reading_goal_result+book_length_result+author_result+genre_result+sensitivity_result+book_prefer_result+reading_goal_result+group_result+adaptation_result
-    return up/down
-
-accuracy_result = accuracy(reading_time_result, book_length_result, book_prefer_result,adaptation_result,genre_result, sensitivity_result, reading_goal_result, author_result, group_result)
-print("Accuracy:",accuracy_result)
+if __name__ == '__main__':
+    print('user1:\n')
+    accuracy(user1, book1)
+    print('user2:\n')
+    accuracy(user2,book2)
