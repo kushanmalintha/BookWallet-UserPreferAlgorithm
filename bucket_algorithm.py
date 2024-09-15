@@ -172,51 +172,109 @@ add_to_bucket(users, books, genre_buckets, length_bucket, reading_goal, sensitiv
 
 
 # function to get which buckets user and book has
-def find_buckets(users, books, *bucket_dicts):
+def find_buckets(users, *bucket_dicts):
     # Create dictionaries to store which buckets each user and book are in
     user_buckets = {user: [] for user in users}
-    book_buckets = {book: [] for book in books}
 
     # Iterate over each bucket dictionary
     for bucket_dict in bucket_dicts:
         # Iterate over each attribute in the bucket dictionary
-        for attribute, (bucket_users, bucket_books) in bucket_dict.items():
+        for attribute, (bucket_users, _) in bucket_dict.items():
             # Check each user in the provided user list
             for user in users:
                 if user in bucket_users:
                     user_buckets[user].append(attribute) 
-            
-            # Check each book in the provided book list
-            for book in books:
-                if book in bucket_books:
-                    book_buckets[book].append(attribute)
-    
-    return user_buckets, book_buckets
+                
+    return user_buckets
 
 bucket_dicts = [genre_buckets, length_bucket, reading_goal, sensitivity, reading_time, book_interaction, adaptation]
-user_buckets, book_buckets = find_buckets(users, books, *bucket_dicts)
+user_buckets = find_buckets(users, *bucket_dicts)
 
-# print("User Buckets:")
-# for user, buckets in user_buckets.items():
-#     print(f"{user}: {buckets}")
-
-# print("\nBook Buckets:")
-# for book, buckets in book_buckets.items():
-#     print(f"{book}: {buckets}")
-# print(book_buckets)
+# print("User Buckets:", user_buckets)
 
 
 
-# function to rank books
-def rank_books(book_bucket):
-    # Initialize rank_buckets dictionary with book keys and attribute counts as values
-    rank_buckets = {book: len(attributes) for book, attributes in book_bucket.items()}
-    
-    # Sort the rank_buckets by values in descending order (from greatest to lowest)
-    sorted_rank_buckets = dict(sorted(rank_buckets.items(), key=lambda item: item[1], reverse=True))
-    
-    return sorted_rank_buckets
+def get_user_book_buckets(user, genre_buckets, user_buckets, length_bucket, reading_goal, sensitivity, reading_time, book_interaction, adaptation):
+    # Initialize an empty dictionary to hold the book counts
+    book_count = {}
 
-book_ranks = rank_books(book_buckets)
-for book, count in book_ranks.items():
-    print(f"{book}: {count}")
+    # Combine all bucket dictionaries into one
+    all_buckets = {
+        'genre': genre_buckets,
+        'length': length_bucket,
+        'goal': reading_goal,
+        'sensitivity': sensitivity,
+        'time': reading_time,
+        'interaction': book_interaction,
+        'adaptation': adaptation
+    }
+
+    # Get the buckets/categories that the user belongs to
+    user_categories = user_buckets.get(user, [])
+
+    # Iterate through each bucket the user belongs to
+    for category in user_categories:
+        bucket_type = None
+        # Identify which bucket type the category belongs to
+        for btype, buckets in all_buckets.items():
+            if category in buckets:
+                bucket_type = btype
+                break
+        
+        if bucket_type and bucket_type in all_buckets:
+            if category in all_buckets[bucket_type]:  # Make sure the category exists in the relevant bucket dict
+                # Get the list of books in that category
+                books_in_category = all_buckets[bucket_type][category][1]
+                
+                # Iterate over the books in this category and update the count
+                for book in books_in_category:
+                    if book in book_count:
+                        book_count[book] += 1  # Increment if the book is already in the dictionary
+                    else:
+                        book_count[book] = 1  # Add the book to the dictionary if it's new
+
+    # Sort the book count dictionary by count in descending order
+    sorted_book_count = dict(sorted(book_count.items(), key=lambda item: item[1], reverse=True))
+
+    return sorted_book_count
+
+
+def process_all_users(users, genre_buckets, user_buckets, length_bucket, reading_goal, sensitivity, reading_time, book_interaction, adaptation):
+    all_user_book_counts = {}
+
+    # Iterate over each user in the users list
+    for user in users:
+        # Get the book counts for the current user, sorted by count
+        book_count = get_user_book_buckets(user, genre_buckets, user_buckets, length_bucket, reading_goal, sensitivity, reading_time, book_interaction, adaptation)
+        # Store the result in the all_user_book_counts dictionary
+        all_user_book_counts[user] = book_count
+
+    return all_user_book_counts
+
+
+# Call the function for all users
+all_book_counts = process_all_users(users, genre_buckets, user_buckets, length_bucket, reading_goal, sensitivity, reading_time, book_interaction, adaptation)
+# print(all_book_counts)
+
+
+def aggregate_and_sort_book_counts(all_user_book_counts):
+    # Initialize an empty dictionary to hold the total book counts
+    total_book_count = {}
+
+    # Aggregate the total book counts across all users
+    for user, book_counts in all_user_book_counts.items():
+        for book, count in book_counts.items():
+            if book in total_book_count:
+                total_book_count[book] += count
+            else:
+                total_book_count[book] = count
+
+    # Sort the total book count dictionary by count in descending order
+    sorted_total_book_count = dict(sorted(total_book_count.items(), key=lambda item: item[1], reverse=True))
+
+    return sorted_total_book_count
+
+# Example usage
+sorted_total_book_counts = aggregate_and_sort_book_counts(all_book_counts)
+print(sorted_total_book_counts)
+
