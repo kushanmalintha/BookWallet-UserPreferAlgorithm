@@ -170,6 +170,8 @@ add_to_bucket(users, books, genre_buckets, length_bucket, reading_goal, sensitiv
 # print("ADAPTATION:", adaptation)
 
 
+
+# function to get which buckets user and book has
 def find_buckets(users, books, *bucket_dicts):
     # Create dictionaries to store which buckets each user and book are in
     user_buckets = {user: [] for user in users}
@@ -182,7 +184,7 @@ def find_buckets(users, books, *bucket_dicts):
             # Check each user in the provided user list
             for user in users:
                 if user in bucket_users:
-                    user_buckets[user].append(attribute)
+                    user_buckets[user].append(attribute) 
             
             # Check each book in the provided book list
             for book in books:
@@ -194,10 +196,27 @@ def find_buckets(users, books, *bucket_dicts):
 bucket_dicts = [genre_buckets, length_bucket, reading_goal, sensitivity, reading_time, book_interaction, adaptation]
 user_buckets, book_buckets = find_buckets(users, books, *bucket_dicts)
 
-print("User Buckets:")
-for user, buckets in user_buckets.items():
-    print(f"{user}: {buckets}")
+# print("User Buckets:")
+# for user, buckets in user_buckets.items():
+#     print(f"{user}: {buckets}")
 
-print("\nBook Buckets:")
-for book, buckets in book_buckets.items():
-    print(f"{book}: {buckets}")
+# print("\nBook Buckets:")
+# for book, buckets in book_buckets.items():
+#     print(f"{book}: {buckets}")
+# print(book_buckets)
+
+
+
+# function to rank books
+def rank_books(book_bucket):
+    # Initialize rank_buckets dictionary with book keys and attribute counts as values
+    rank_buckets = {book: len(attributes) for book, attributes in book_bucket.items()}
+    
+    # Sort the rank_buckets by values in descending order (from greatest to lowest)
+    sorted_rank_buckets = dict(sorted(rank_buckets.items(), key=lambda item: item[1], reverse=True))
+    
+    return sorted_rank_buckets
+
+book_ranks = rank_books(book_buckets)
+for book, count in book_ranks.items():
+    print(f"{book}: {count}")
